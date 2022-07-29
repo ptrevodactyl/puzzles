@@ -14,7 +14,11 @@ int main() {
         bool on = true;
 
         for(i = 0; i < N; i++) {
-            if((S[i] - '0') ^ (R[i] - '0')) on = !on;            
+            // on == 0, R^S == 0 -> on = 0
+            // on == 0, R^S == 1 -> on = 1
+            // on == 1, R^S == 0 -> on = 1
+            // on == 1, R^S == 1 -> on = 0
+            if(R[i] ^ S[i]) on = !on;
         }
         std::cout << (on ? "1\n" : "0\n");
     }
